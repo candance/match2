@@ -111,7 +111,7 @@
         NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardIndex];
         [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        cardButton.titleLabel.font = [UIFont systemFontOfSize: 20];
+        cardButton.titleLabel.font = [UIFont systemFontOfSize: 18];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         // button is only enabled if card is not matched
         cardButton.enabled = !card.isMatched;
