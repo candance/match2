@@ -24,4 +24,6 @@
 
 @property (nonatomic) NSInteger numberOfCardsMatchMode;
 
+@property (strong, nonatomic) NSString *matchStatus;
+
 @end

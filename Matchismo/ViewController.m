@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeButton;
+@property (weak, nonatomic) IBOutlet UILabel *matchStatusLabel;
 
 @end
 
@@ -33,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.matchStatusLabel.text = @"Welcome! Choose a card to start!";
     self.resetButton.layer.borderWidth = 0.5;
     self.resetButton.layer.cornerRadius = 5;
 }
@@ -114,6 +116,7 @@
         // button is only enabled if card is not matched
         cardButton.enabled = !card.isMatched;
     }
+    self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
 }
 
@@ -133,6 +136,7 @@
     // card match mode corresponds with currently selected segment
     [self gameMode:self.modeButton];
     [self updateUI];
+    self.matchStatusLabel.text = @"Choose a card to start!";
 }
 
 @end
