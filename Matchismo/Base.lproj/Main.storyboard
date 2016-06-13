@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wys-Ke-aoD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,10 +8,28 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="f7m-ZR-vmz">
+            <objects>
+                <tabBarController id="Wys-Ke-aoD" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jg0-2T-WM8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="OZZ-kk-PPM"/>
+                        <segue destination="Idv-bU-yZ2" kind="relationship" relationship="viewControllers" id="8j3-1X-hk9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BuO-zs-xOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-899" y="247.5"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PlayingCardGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -1052,7 +1070,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE9-9v-GSE">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1098,7 +1116,7 @@
                             <constraint firstItem="8du-bE-zS8" firstAttribute="bottom" secondItem="uWK-fi-2hM" secondAttribute="bottom" id="82u-0y-nEt"/>
                             <constraint firstItem="5bs-kL-fde" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="8Dy-D0-etJ"/>
                             <constraint firstItem="Ngt-Yj-GLJ" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="8r0-iZ-9QN">
-                                <variation key="heightClass=regular" constant="-3"/>
+                                <variation key="heightClass=regular" constant="-4"/>
                             </constraint>
                             <constraint firstItem="IPG-BW-RHs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="95s-QM-Jm2">
                                 <variation key="heightClass=regular" constant="70"/>
@@ -1143,13 +1161,13 @@
                             </constraint>
                             <constraint firstItem="8du-bE-zS8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="129" id="EdH-g8-73O"/>
                             <constraint firstItem="BDg-6v-cP9" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="FTf-AX-bmy">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="6LW-Xz-zDD" firstAttribute="leading" secondItem="CVZ-Gu-ouc" secondAttribute="trailing" constant="8" id="Fit-TR-E9Q">
                                 <variation key="heightClass=regular" constant="7"/>
                             </constraint>
                             <constraint firstItem="RR1-RN-4zO" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="GIo-Ua-PzV">
-                                <variation key="heightClass=regular" constant="-3"/>
+                                <variation key="heightClass=regular" constant="-4"/>
                             </constraint>
                             <constraint firstItem="lOg-P1-wKi" firstAttribute="top" secondItem="unS-9v-09i" secondAttribute="top" id="GJP-XO-czy"/>
                             <constraint firstItem="lOg-P1-wKi" firstAttribute="leading" secondItem="8du-bE-zS8" secondAttribute="leading" id="HB5-SY-CN2"/>
@@ -1159,7 +1177,7 @@
                             <constraint firstItem="kr4-l0-sxO" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="IMM-Zj-6B4"/>
                             <constraint firstItem="8du-bE-zS8" firstAttribute="top" secondItem="MtK-0e-eXQ" secondAttribute="top" id="IRD-9s-BDB"/>
                             <constraint firstItem="59a-Vk-zwY" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="JvD-EC-G5d">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="8du-bE-zS8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="Jwv-aD-yig"/>
                             <constraint firstItem="7V5-54-6YG" firstAttribute="leading" secondItem="NPu-LP-fzP" secondAttribute="trailing" constant="8" id="K3c-j7-GgB">
@@ -1167,7 +1185,7 @@
                             </constraint>
                             <constraint firstItem="LuN-Pm-lFX" firstAttribute="top" secondItem="RR1-RN-4zO" secondAttribute="top" id="LFI-ij-TVs"/>
                             <constraint firstItem="lOg-P1-wKi" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="MIt-IW-8Oc">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="unS-9v-09i" firstAttribute="top" secondItem="IPG-BW-RHs" secondAttribute="bottom" constant="8" id="Mkp-8y-it7">
                                 <variation key="heightClass=regular" constant="9"/>
@@ -1225,7 +1243,7 @@
                             </constraint>
                             <constraint firstItem="MLe-ep-TLk" firstAttribute="top" secondItem="6sB-hg-qH6" secondAttribute="bottom" constant="8" id="WtN-uO-7YF"/>
                             <constraint firstItem="unS-9v-09i" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="WzN-qw-jbk">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="MtK-0e-eXQ" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="X3j-VQ-Gtz"/>
                             <constraint firstItem="7V5-54-6YG" firstAttribute="top" secondItem="Iwl-6m-SZz" secondAttribute="top" id="YIB-Dh-0mh"/>
@@ -1234,7 +1252,7 @@
                             </constraint>
                             <constraint firstItem="lOg-P1-wKi" firstAttribute="bottom" secondItem="59a-Vk-zwY" secondAttribute="bottom" id="ZHF-dM-KsS"/>
                             <constraint firstItem="Iwl-6m-SZz" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="Zbg-lW-YXi">
-                                <variation key="heightClass=regular" constant="-3"/>
+                                <variation key="heightClass=regular" constant="-4"/>
                             </constraint>
                             <constraint firstItem="59a-Vk-zwY" firstAttribute="leading" secondItem="zKK-Fe-cuQ" secondAttribute="trailing" constant="8" id="ajo-4A-lnI"/>
                             <constraint firstItem="MZa-Br-lgd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="al3-11-D2f"/>
@@ -1255,7 +1273,7 @@
                                 <variation key="heightClass=regular" constant="-1"/>
                             </constraint>
                             <constraint firstItem="zKK-Fe-cuQ" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="ejy-iE-ith">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="BDg-6v-cP9" firstAttribute="centerX" secondItem="MtK-0e-eXQ" secondAttribute="centerX" id="en8-vr-Nyn"/>
                             <constraint firstItem="8du-bE-zS8" firstAttribute="bottom" secondItem="IPG-BW-RHs" secondAttribute="bottom" id="eyb-Oz-oQh">
@@ -1273,7 +1291,7 @@
                                 <variation key="heightClass=regular" constant="9"/>
                             </constraint>
                             <constraint firstItem="6LW-Xz-zDD" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="g7X-3D-kdx">
-                                <variation key="heightClass=regular" constant="-4"/>
+                                <variation key="heightClass=regular" constant="-5"/>
                             </constraint>
                             <constraint firstItem="6LW-Xz-zDD" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="gE5-Ux-lCB">
                                 <variation key="heightClass=regular" constant="1"/>
@@ -1314,12 +1332,12 @@
                                 <variation key="heightClass=regular" constant="1"/>
                             </constraint>
                             <constraint firstItem="BDg-6v-cP9" firstAttribute="width" secondItem="IPG-BW-RHs" secondAttribute="width" id="mxm-os-sUh">
-                                <variation key="heightClass=regular" constant="-4"/>
+                                <variation key="heightClass=regular" constant="-5"/>
                             </constraint>
                             <constraint firstItem="CVZ-Gu-ouc" firstAttribute="bottom" secondItem="BBP-CQ-YFA" secondAttribute="bottom" id="oBL-cp-ILs"/>
                             <constraint firstItem="CVZ-Gu-ouc" firstAttribute="bottom" secondItem="WaP-g7-IPP" secondAttribute="bottom" id="oL6-sJ-R21"/>
                             <constraint firstItem="5bs-kL-fde" firstAttribute="height" secondItem="IPG-BW-RHs" secondAttribute="height" id="oNf-cc-t7U">
-                                <variation key="heightClass=regular" constant="-1"/>
+                                <variation key="heightClass=regular" constant="-2"/>
                             </constraint>
                             <constraint firstItem="NPu-LP-fzP" firstAttribute="leading" secondItem="EbF-u8-fVB" secondAttribute="leading" id="okq-5U-722"/>
                             <constraint firstItem="7V5-54-6YG" firstAttribute="bottom" secondItem="Iwl-6m-SZz" secondAttribute="bottom" id="opO-2F-wiN"/>
@@ -1750,6 +1768,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="NaV-a8-Wlv"/>
                     <connections>
                         <outlet property="matchStatusLabel" destination="SE9-9v-GSE" id="yxr-UK-vKw"/>
                         <outlet property="modeButton" destination="E48-D9-gon" id="dBV-Ns-6lB"/>
@@ -1790,7 +1809,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="357.75"/>
+            <point key="canvasLocation" x="171" y="-75.75"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tFY-wl-kjM">
+            <objects>
+                <viewController id="Idv-bU-yZ2" customClass="SetCardGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ueu-x6-Q2s"/>
+                        <viewControllerLayoutGuide type="bottom" id="ylk-VC-llY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4De-ki-TnW">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="8SX-GQ-nAL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3IN-3A-18C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="171" y="561"/>
         </scene>
     </scenes>
     <resources>

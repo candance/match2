@@ -10,7 +10,6 @@
 
 #import "ViewController.h"
 #import "Deck.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
 @interface ViewController ()
@@ -18,7 +17,6 @@
 //@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 //@property (nonatomic) int flipCount;
 @property (strong, nonatomic) Deck *deck;
-@property (nonatomic, strong) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
@@ -54,8 +52,8 @@
 //    return _deck;
 //}
 
-- (Deck *)createDeck {
-    return [[PlayingCardDeck alloc] init];
+- (Deck *)createDeck { // abstract
+    return nil;
 }
 
 //- (void)setFlipCount:(int)flipCount {

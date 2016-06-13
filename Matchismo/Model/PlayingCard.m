@@ -17,17 +17,20 @@
     // in 2-card match mode
     if ([otherCards count] == 1) {
         // firstObject returns first object in an array, if array is empty, returns nil
-        PlayingCard *otherCard = [otherCards firstObject];
-        if ([self.suit isEqualToString:otherCard.suit]) {
-            score = 1;
-        }
-        else if (self.rank == otherCard.rank) {
-            score = 4;
+        id card = [otherCards firstObject];
+        // since card is id, we need to make sure it is a PlayingCard otherwise it'll crash
+        if ([card isKindOfClass:[PlayingCard class]]) {
+            PlayingCard *otherCard = (PlayingCard *)card;
+            if ([self.suit isEqualToString:otherCard.suit]) {
+                score = 1;
+            }
+            else if (self.rank == otherCard.rank) {
+                score = 4;
+            }
         }
     }
     // in 3-card match mode
     else if ([otherCards count] == 2) {
-        // firstObject returns first object in an array, if array is empty, returns nil
         PlayingCard *otherCard1 = [otherCards firstObject];
         PlayingCard *otherCard2 = [otherCards lastObject];
         if ([self.suit isEqualToString:otherCard1.suit] && [self.suit isEqualToString:otherCard2.suit]) {
