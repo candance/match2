@@ -16,4 +16,7 @@
 
 - (Card *)drawRandomCard;
 
+@property (strong,nonatomic) NSMutableArray *cards;
+
+
 @end

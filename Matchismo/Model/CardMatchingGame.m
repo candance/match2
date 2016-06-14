@@ -47,11 +47,11 @@
     return self;
 }
 
-// if user doesn't select game mode, default card match mode is 2
-- (NSInteger)numberOfCardsMatchMode {
-    if (!_numberOfCardsMatchMode) _numberOfCardsMatchMode = 2;
-    return _numberOfCardsMatchMode;
-}
+//// if user doesn't select game mode, default card match mode is 2
+//- (NSInteger)numberOfCardsMatchMode {
+//    if (!_numberOfCardsMatchMode) _numberOfCardsMatchMode = 2;
+//    return _numberOfCardsMatchMode;
+//}
 
 // constant OR use #define MISMATCH_PENALTY 2
 static const int MISMATCH_PENALTY = 2;

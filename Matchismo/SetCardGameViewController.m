@@ -7,15 +7,23 @@
 //
 
 #import "SetCardGameViewController.h"
+#import "SetCardDeck.h"
 #import "CardMatchingGame.h"
 
 
 @implementation SetCardGameViewController
+
+- (Deck *)createDeck {
+    return [[SetCardDeck alloc] init];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.game.numberOfCardsMatchMode = 3;
 }
+
+
+//    NSAttributedString *attributedString = [NSAttributedString alloc] initWithString:@"" attributes:<#(nullable NSDictionary<NSString *,id> *)#>
 
 @end
