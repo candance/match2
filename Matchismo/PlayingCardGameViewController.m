@@ -10,6 +10,16 @@
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
+@interface ViewController ()
+
+@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UILabel *matchStatusLabel;
+
+@end
+
 @implementation PlayingCardGameViewController
 
 - (Deck *)createDeck {

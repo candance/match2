@@ -62,8 +62,8 @@
         // button is only enabled if card is not matched
         cardButton.enabled = !card.isMatched;
     }
-    self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
+    //self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
+    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
 }
 
 - (NSString *)titleForCard: (Card *)card {

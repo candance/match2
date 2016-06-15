@@ -29,23 +29,6 @@
             }
         }
     }
-    // in 3-card match mode
-    else if ([otherCards count] == 2) {
-        PlayingCard *otherCard1 = [otherCards firstObject];
-        PlayingCard *otherCard2 = [otherCards lastObject];
-        if ([self.suit isEqualToString:otherCard1.suit] && [self.suit isEqualToString:otherCard2.suit]) {
-            score = 2;
-        }
-        else if ([self.suit isEqualToString:otherCard1.suit] || [self.suit isEqualToString:otherCard2.suit] || [otherCard1.suit isEqualToString:otherCard2.suit]) {
-            score = 1;
-        }
-        else if (self.rank == otherCard1.rank && self.rank == otherCard2.rank) {
-            score = 8;
-        }
-        else if (self.rank == otherCard1.rank || self.rank == otherCard2.rank || otherCard1.rank == otherCard2.rank) {
-            score = 4;
-        }
-    }
     return score;
 }
 
