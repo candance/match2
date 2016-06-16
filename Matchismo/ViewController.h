@@ -17,6 +17,7 @@
 // protected
 // for subclasses
 - (Deck *)createDeck; // abstract
+- (void)updateUI; // abstract
 
 @property (nonatomic, strong) CardMatchingGame *game;
 

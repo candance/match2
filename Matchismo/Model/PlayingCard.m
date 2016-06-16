@@ -22,7 +22,7 @@
         if ([card isKindOfClass:[PlayingCard class]]) {
             PlayingCard *otherCard = (PlayingCard *)card;
             if ([self.suit isEqualToString:otherCard.suit]) {
-                score = 1;
+                score = 2;
             }
             else if (self.rank == otherCard.rank) {
                 score = 4;

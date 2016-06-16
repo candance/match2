@@ -31,11 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.game.numberOfCardsMatchMode = 3;
     [self updateUI];
 }
 
 - (void)updateUI {
+    
+    self.game.numberOfCardsMatchMode = 3;
     
     for (UIButton *cardButton in self.cardButtons) {
         NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
@@ -45,13 +46,14 @@
         // button is only enabled if card is not matched
         cardButton.enabled = !card.isMatched;
     }
-    //self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
-    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
+    self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
 }
 
 - (NSAttributedString *)titleForCard: (Card *)card {
     
     SetCard *setCard = (SetCard *)card;
+    
     // convert NSNumber to CGFloat for setCard.shading
     NSNumber *shading = setCard.shading;
     CGFloat shade = [shading floatValue];
@@ -68,6 +70,7 @@
     SetCard *setCard = (SetCard *)card;
     
     NSMutableArray *symbols = [[NSMutableArray alloc] init];
+    
     // converting numberOfSymbols from NSNumber to int for for-loop
     int number = [setCard.numberOfSymbols intValue];
     for (int i = 0; i < number; i++) {

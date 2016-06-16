@@ -28,7 +28,8 @@
     [super viewDidLoad];
     
     self.matchStatusLabel.text = @"Welcome! Choose a card to start!";
-    self.resetButton.layer.borderWidth = 0.5;
+    self.resetButton.layer.borderWidth = 1;
+    self.resetButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.resetButton.layer.cornerRadius = 5;
 }
 
@@ -48,32 +49,11 @@
     NSUInteger cardIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
-    
 }
 
-- (void)updateUI {
-    
-    for (UIButton *cardButton in self.cardButtons) {
-        NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
-        Card *card = [self.game cardAtIndex:cardIndex];
-        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        cardButton.titleLabel.font = [UIFont systemFontOfSize: 18];
-        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-        // button is only enabled if card is not matched
-        cardButton.enabled = !card.isMatched;
-    }
-    //self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
-    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
+- (void)updateUI { //abstract
+    nil;
 }
-
-- (NSString *)titleForCard: (Card *)card {
-    return card.isChosen ? card.contents : @"";
-}
-
-- (UIImage *)backgroundImageForCard: (Card *)card {
-    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
-}
-
 
 - (IBAction)resetGame:(UIButton *)sender {
     // to reset game, set game to nil (deletes everything) then update UI
