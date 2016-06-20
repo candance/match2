@@ -87,9 +87,6 @@
         self.matchStatusUpdate = nil;
         return self.matchStatusUpdate;
     }
-    
-//    if (self.game.card)
-    
     return nil;
 }
 

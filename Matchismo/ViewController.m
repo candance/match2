@@ -52,6 +52,8 @@
     
     id matchStatus = [self matchStatusWithCards:self.game.chosenCards];
     
+    self.matchStatusLabel.numberOfLines = 0;
+    
     if ([matchStatus isKindOfClass:[NSString class]]) {
         
         // PlayingCard display
@@ -78,6 +80,7 @@
     // to reset game, set game to nil (deletes everything) then update UI
     self.game = nil;
     [self updateUI];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: 0"];
     self.matchStatusLabel.text = @"Choose a card to start!";
 }
 
