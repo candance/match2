@@ -62,10 +62,13 @@ static const int MATCH_BONUS = 4;
 // most important logic, where matching and scoring happens
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
-    if (self.chosenCards.count == self.numberOfCardsMatchMode) {
-        [self.chosenCards removeAllObjects];
+
+    for (Card *otherCard in self.cards) {
+        if (!otherCard.isChosen || otherCard.isMatched) {
+            [self.chosenCards removeObject:otherCard];
+        }
     }
-    
+
     Card *card = [self cardAtIndex:index];
 
     // if card is NOT matched
@@ -74,6 +77,7 @@ static const int MATCH_BONUS = 4;
         if (card.isChosen) {
             // chosen is name of property, isChosen is name of getter
             card.chosen = NO;
+            [self.chosenCards removeObject:card];
         }
         else {
             // create an array to store chosen cards
