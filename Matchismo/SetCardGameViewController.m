@@ -46,8 +46,6 @@
         // button is only enabled if card is not matched
         cardButton.enabled = !card.isMatched;
     }
-    self.matchStatusLabel.text = [NSString stringWithFormat:@"%@", self.game.matchStatus];
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
 }
 
 - (NSAttributedString *)titleForCard: (Card *)card {
@@ -57,7 +55,7 @@
     // convert NSNumber to CGFloat for setCard.shading
     NSNumber *shading = setCard.shading;
     CGFloat shade = [shading floatValue];
-    NSAttributedString *contents = [[NSAttributedString alloc] initWithString:[self symbolWithNumber:card]
+    NSAttributedString *contents = [[NSAttributedString alloc] initWithString:[self symbolWithNumber:card symbolSeparator:@"\n"]
                                                                    attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody],
                                                                                 NSStrokeColorAttributeName: setCard.color,
                                                                                 NSStrokeWidthAttributeName: @-5,
@@ -65,7 +63,7 @@
     return contents;
 }
 
-- (NSString *)symbolWithNumber: (Card *)card {
+- (NSString *)symbolWithNumber:(Card *)card symbolSeparator:(NSString *)symbolSeparator{
     
     SetCard *setCard = (SetCard *)card;
     
@@ -77,12 +75,19 @@
         [symbols addObject:setCard.symbol];
     }
     
-    NSString *symbolAndNumber = [symbols componentsJoinedByString:@"\n"];
+    NSString *symbolAndNumber = [symbols componentsJoinedByString:symbolSeparator];
     return symbolAndNumber;
 }
 
 - (UIImage *)backgroundImageForCard: (Card *)card {
     return [UIImage imageNamed:card.isChosen ? @"chosencard" : @"cardfront"];
 }
+
+//- (id)matchStatusWithCards:(NSArray *)cards {
+//    
+//    
+//    NSAttributedString *matchStatusUpdate = 
+//    return matchStatusUpdate;
+//}
 
 @end

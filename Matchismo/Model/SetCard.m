@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SetCard.h"
 
+@interface SetCard()
+
+@property (nonatomic) BOOL symbolMatch;
+@property (nonatomic) BOOL colorMatch;
+@property (nonatomic) BOOL numberMatch;
+@property (nonatomic) BOOL shadeMatch;
+
+@end
+
 @implementation SetCard
-
-BOOL symbolMatch;
-BOOL colorMatch;
-BOOL numberMatch;
-BOOL shadeMatch;
-
 
 // overwriting match method in Card
 - (int)match:(NSArray *)otherCards {
@@ -32,50 +35,50 @@ BOOL shadeMatch;
             
             // checking if symbols all match or all not match
             if ([self.symbol isEqualToString:otherCard1.symbol] && [self.symbol isEqualToString:otherCard2.symbol]) {
-                symbolMatch = YES;
+                self.symbolMatch = YES;
             }
             else if (![self.symbol isEqualToString:otherCard1.symbol] && ![self.symbol isEqualToString:otherCard2.symbol] && ![otherCard1.symbol isEqualToString:otherCard2.symbol]) {
-                symbolMatch = YES;
+                self.symbolMatch = YES;
             }
             else {
-                symbolMatch = NO;
+                self.symbolMatch = NO;
             }
             
             // checking if colors all match or all not match
             if ([self.color isEqual:otherCard1.color] && [self.color isEqual:otherCard2.color]) {
-                colorMatch = YES;
+                self.colorMatch = YES;
             }
             else if (![self.color isEqual:otherCard1.color] && ![self.color isEqual:otherCard2.color] && ![otherCard1.color isEqual:otherCard2.color]) {
-                colorMatch = YES;
+                self.colorMatch = YES;
             }
             else {
-                colorMatch = NO;
+                self.colorMatch = NO;
             }
             
             // checking if numbers all match or all not match
             if ([self.numberOfSymbols isEqualToNumber:otherCard1.numberOfSymbols] && [self.numberOfSymbols isEqualToNumber:otherCard2.numberOfSymbols]) {
-                numberMatch = YES;
+                self.numberMatch = YES;
             }
             else if (![self.numberOfSymbols isEqualToNumber:otherCard1.numberOfSymbols] && ![self.numberOfSymbols isEqualToNumber:otherCard2.numberOfSymbols] && ![otherCard1.numberOfSymbols isEqualToNumber:otherCard2.numberOfSymbols]) {
-                numberMatch = YES;
+                self.numberMatch = YES;
             }
             else {
-                numberMatch = NO;
+                self.numberMatch = NO;
             }
             
             // checking if shading all match or all not match
             if ([self.shading isEqualToNumber:otherCard1.shading] && [self.shading isEqualToNumber:otherCard2.shading]) {
-                shadeMatch = YES;
+                self.shadeMatch = YES;
             }
             else if (![self.shading isEqualToNumber:otherCard1.shading] && ![self.shading isEqualToNumber:otherCard2.shading] && ![otherCard1.shading isEqualToNumber:otherCard2.shading]) {
-                shadeMatch = YES;
+                self.shadeMatch = YES;
             }
             else {
-                shadeMatch = NO;
+                self.shadeMatch = NO;
             }
             
             // checking if all 4 conditions are fulfilled
-            if ((symbolMatch) && (colorMatch) && (numberMatch) && (shadeMatch)) {
+            if ((self.symbolMatch) && (self.colorMatch) && (self.numberMatch) && (self.shadeMatch)) {
                 score = 10;
             }
         }

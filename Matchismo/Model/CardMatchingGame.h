@@ -17,13 +17,16 @@
                         usingDeck:(Deck *)deck;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
+
 // to record which card was picked
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) NSInteger score;
 
+@property (nonatomic, readonly) NSInteger lastScore;
+
 @property (nonatomic) NSInteger numberOfCardsMatchMode;
 
-@property (strong, nonatomic) NSString *matchStatus;
+@property (nonatomic, strong) NSMutableArray *chosenCards;
 
 @end

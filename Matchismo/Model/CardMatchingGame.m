@@ -12,6 +12,7 @@
 
 // readwrite is only used when you're using readonly
 @property (nonatomic, readwrite) NSInteger score;
+@property (nonatomic, readwrite) NSInteger lastScore;
 
 @property (nonatomic, strong) NSMutableArray *cards; // of Card
 
@@ -23,6 +24,12 @@
 {
     if (!_cards) _cards = [[NSMutableArray alloc] init];
     return _cards;
+}
+
+- (NSMutableArray *)chosenCards
+{
+    if (!_chosenCards) _chosenCards = [[NSMutableArray alloc] init];
+    return _chosenCards;
 }
 
 - (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
@@ -47,12 +54,6 @@
     return self;
 }
 
-//// if user doesn't select game mode, default card match mode is 2
-//- (NSInteger)numberOfCardsMatchMode {
-//    if (!_numberOfCardsMatchMode) _numberOfCardsMatchMode = 2;
-//    return _numberOfCardsMatchMode;
-//}
-
 // constant OR use #define MISMATCH_PENALTY 2
 static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
@@ -61,48 +62,49 @@ static const int MATCH_BONUS = 4;
 // most important logic, where matching and scoring happens
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
-    Card *card = [self cardAtIndex:index];
+    if (self.chosenCards.count == self.numberOfCardsMatchMode) {
+        [self.chosenCards removeAllObjects];
+    }
     
+    Card *card = [self cardAtIndex:index];
+
     // if card is NOT matched
     if (!card.isMatched) {
         // if card is NOT chosen
         if (card.isChosen) {
             // chosen is name of property, isChosen is name of getter
             card.chosen = NO;
-            self.matchStatus = @"";
         }
         else {
-            self.matchStatus = card.contents;
             // create an array to store chosen cards
-            NSMutableArray *currentChosenCards = [[NSMutableArray alloc] init];
-            // create a mutable string to add current chosen cards for easy display
-            NSMutableString *contentsCurrentChosenCards = [[NSMutableString alloc] init];
+            NSMutableArray *otherChosenCards = [[NSMutableArray alloc] init];
+            [self.chosenCards addObject:card];
             for (Card *otherCard in self.cards) {
                 // if another card is chosen and has not been matched
                 if (otherCard.isChosen && !otherCard.isMatched) {
-                    [currentChosenCards addObject:otherCard];
-                    [contentsCurrentChosenCards appendFormat:@"%@ ", otherCard.contents];
-                    self.matchStatus = [[NSString stringWithFormat:@"One more card to match with %@ and ", card.contents] stringByAppendingString:contentsCurrentChosenCards];
+                    [otherChosenCards addObject:otherCard];
                 }
             }
             // if the number of currently chosen unmatched cards matches the number of cards that have to be matched
-            // minus 1 because the currentChosenCards doesn't include the currently selected card
-            if ([currentChosenCards count] == self.numberOfCardsMatchMode - 1) {
-                int matchScore = [card match:currentChosenCards];
+            // minus 1 because the otherChosenCards doesn't include the currently selected card
+            if ([otherChosenCards count] == self.numberOfCardsMatchMode - 1) {
+                self.lastScore = 0;
+                [self.chosenCards arrayByAddingObjectsFromArray:otherChosenCards];
+                int matchScore = [card match:otherChosenCards];
                 // match: returns 0 if no match, so if matchScore is valid, there's a match
                 if (matchScore) {
-                    self.score += matchScore * MATCH_BONUS;
-                    for (Card *otherCard in currentChosenCards) {
+                    self.lastScore = matchScore * MATCH_BONUS;
+                    self.score += self.lastScore;
+                    for (Card *otherCard in otherChosenCards) {
                         otherCard.matched = YES;
-                        self.matchStatus = [[NSString stringWithFormat:@"%d point gain! Sucessfully matched %@", matchScore * MATCH_BONUS, card.contents] stringByAppendingString:contentsCurrentChosenCards];
                     }
                     card.matched = YES;
                 }
                 else {
-                    self.score -= MISMATCH_PENALTY;
-                    for (Card *otherCard in currentChosenCards) {
+                    self.lastScore = -MISMATCH_PENALTY;
+                    self.score +=  self.lastScore;
+                    for (Card *otherCard in otherChosenCards) {
                         otherCard.chosen = NO;
-                        self.matchStatus = [[NSString stringWithFormat:@"%d point penalty! Did not match %@", MISMATCH_PENALTY, card.contents] stringByAppendingString:contentsCurrentChosenCards];
                     }
                 }
             }

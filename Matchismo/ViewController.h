@@ -18,6 +18,7 @@
 // for subclasses
 - (Deck *)createDeck; // abstract
 - (void)updateUI; // abstract
+- (id)matchStatusWithCards:(NSArray *)cards;
 
 @property (nonatomic, strong) CardMatchingGame *game;
 

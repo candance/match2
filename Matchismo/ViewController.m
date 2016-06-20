@@ -49,10 +49,29 @@
     NSUInteger cardIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
+    
+    id matchStatus = [self matchStatusWithCards:self.game.chosenCards];
+    
+    if ([matchStatus isKindOfClass:[NSString class]]) {
+        
+        // PlayingCard display
+        self.matchStatusLabel.text = (NSString *)matchStatus;
+    }
+    else if ([matchStatus isKindOfClass:[NSAttributedString class]]) {
+        
+        // SetCard display
+        self.matchStatusLabel.attributedText = (NSAttributedString *)matchStatus;
+    }
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
 }
 
 - (void)updateUI { //abstract
     nil;
+}
+
+- (id)matchStatusWithCards:(NSArray *)cards { //abstract
+    return nil;
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
